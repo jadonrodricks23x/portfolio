@@ -1,48 +1,34 @@
 import { motion } from "framer-motion";
 import { FaGithub, FaLinkedin } from "react-icons/fa6";
-import { Sun, Moon } from "lucide-react";
-import { useTheme } from "../hooks/useTheme";
 
 export function Navbar() {
-  const { theme, toggleTheme } = useTheme();
-
   return (
     <motion.nav 
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5, ease: "easeOut" }}
-      className="fixed top-0 left-0 right-0 z-50 glass-nav"
+      className="absolute left-0 right-0 top-0 z-50 px-6 pt-5"
     >
-      <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      <div className="mx-auto flex h-14 max-w-7xl items-center justify-between gap-4">
         <div className="flex items-center space-x-2">
-          <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-brand-primary to-brand-accent flex items-center justify-center shadow-lg shadow-brand-primary/20">
+          <div className="flex h-9 w-9 items-center justify-center rounded-full border border-white/30 bg-white/15 shadow-lg shadow-sky-950/10 backdrop-blur-md">
             <span className="text-white font-bold font-sans">J</span>
           </div>
-          <span className="text-xl font-bold font-sans tracking-tight text-zinc-900 dark:text-white transition-colors">Jadon<span className="text-zinc-500">Rodricks</span></span>
+          <span className="text-lg font-bold font-sans tracking-tight text-white sm:text-xl">Jadon<span className="text-pink-200">Rodricks</span></span>
         </div>
         
-        <div className="hidden md:flex items-center space-x-8">
-          <a href="#about" className="text-sm font-medium text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors">About</a>
-          <a href="#projects" className="text-sm font-medium text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors">Projects</a>
-          <a href="#skills" className="text-sm font-medium text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors">Skills</a>
-          <a href="#contact" className="text-sm font-medium text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors">Contact</a>
+        <div className="hidden items-center gap-1 rounded-full border border-white/25 bg-white/10 p-1.5 shadow-lg shadow-sky-950/10 backdrop-blur-xl md:flex">
+          <a href="#about" className="rounded-full bg-white/15 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-white/25">About</a>
+          <a href="#projects" className="rounded-full px-4 py-2 text-sm font-medium text-white/75 transition-colors hover:bg-white/15 hover:text-white">Projects</a>
+          <a href="#skills" className="rounded-full px-4 py-2 text-sm font-medium text-white/75 transition-colors hover:bg-white/15 hover:text-white">Skills</a>
+          <a href="#contact" className="rounded-full px-4 py-2 text-sm font-medium text-white/75 transition-colors hover:bg-white/15 hover:text-white">Contact</a>
         </div>
         
-        <div className="flex items-center space-x-4">
-          <button
-            onClick={toggleTheme}
-            className="p-2 rounded-full text-zinc-500 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 hover:text-zinc-900 dark:hover:text-white transition-colors"
-            aria-label="Toggle theme"
-          >
-            {theme === "dark" ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
-          </button>
-          
-          <div className="w-px h-6 bg-zinc-200 dark:bg-zinc-800 mx-2"></div>
-          
-          <a href="https://github.com/jadonrodricks23x" target="_blank" rel="noreferrer" className="text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors">
+        <div className="flex items-center gap-4">
+          <a href="https://github.com/jadonrodricks23x" target="_blank" rel="noreferrer" aria-label="GitHub" className="text-white/80 transition-colors hover:text-white">
             <FaGithub className="w-5 h-5" />
           </a>
-          <a href="https://www.linkedin.com/in/jadon-rodricks-bb7753389" target="_blank" rel="noreferrer" className="text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors">
+          <a href="https://www.linkedin.com/in/jadon-rodricks-bb7753389" target="_blank" rel="noreferrer" aria-label="LinkedIn" className="text-white/80 transition-colors hover:text-pink-200">
             <FaLinkedin className="w-5 h-5" />
           </a>
         </div>

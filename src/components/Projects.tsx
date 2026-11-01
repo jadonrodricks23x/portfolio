@@ -31,7 +31,7 @@ export function Projects() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-3xl md:text-5xl font-bold text-zinc-900 dark:text-white mb-6 transition-colors"
+            className="text-3xl md:text-5xl font-bold text-zinc-900 mb-6"
           >
             Featured <span className="text-zinc-500">Work</span>
           </motion.h2>
@@ -49,8 +49,8 @@ export function Projects() {
                 onClick={() => setFilter(tag)}
                 className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
                   filter === tag 
-                    ? "bg-zinc-900 text-white dark:bg-white dark:text-black shadow-md" 
-                    : "bg-white text-zinc-600 border border-zinc-200 hover:bg-zinc-50 dark:bg-zinc-900 dark:text-zinc-400 dark:border-transparent dark:hover:text-white dark:hover:bg-zinc-800"
+                    ? "bg-brand-primary text-white shadow-md shadow-sky-500/20"
+                      : "bg-white text-zinc-600 border border-sky-100 hover:border-brand-accent/40 hover:text-brand-accent hover:bg-pink-50"
                 }`}
               >
                 {tag}

@@ -1,7 +1,5 @@
 @import "tailwindcss";
 
-@custom-variant dark (&:where(.dark, .dark *));
-
 @theme {
   --font-sans: "Inter", "Outfit", system-ui, sans-serif;
   
@@ -9,9 +7,9 @@
   --color-zinc-900: #18181b;
   --color-zinc-950: #09090b;
 
-  --color-brand-primary: #8b5cf6; /* purple-500 */
-  --color-brand-secondary: #ec4899; /* pink-500 */
-  --color-brand-accent: #3b82f6; /* blue-500 */
+  --color-brand-primary: #0ea5e9;
+  --color-brand-secondary: #ffffff;
+  --color-brand-accent: #ec4899;
   
   --animate-blob: blob 7s infinite;
   --animate-fade-in-up: fadeInUp 0.5s ease-out forwards;
@@ -48,20 +46,91 @@
     scroll-behavior: smooth;
   }
   body {
-    @apply bg-zinc-50 text-zinc-900 dark:bg-zinc-950 dark:text-zinc-50 antialiased selection:bg-brand-primary/30 selection:text-brand-primary dark:selection:text-white transition-colors duration-300;
+    @apply bg-white text-zinc-900 antialiased selection:bg-brand-primary/20 selection:text-sky-900;
   }
 }
 
 @layer utilities {
   .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-brand-primary via-brand-secondary to-brand-accent;
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-brand-primary to-brand-accent;
   }
   
   .glass-card {
-    @apply bg-white/60 dark:bg-zinc-900/50 backdrop-blur-md border border-white/40 dark:border-zinc-800/50 shadow-xl shadow-black/5 dark:shadow-black/20;
+    @apply bg-white/80 backdrop-blur-md border border-sky-100 shadow-xl shadow-sky-950/5;
   }
   
   .glass-nav {
-    @apply bg-white/80 dark:bg-zinc-950/80 backdrop-blur-lg border-b border-zinc-200/50 dark:border-zinc-800/50;
+    @apply bg-white/85 backdrop-blur-lg border-b border-sky-100;
+  }
+}
+
+.hero-stage {
+  isolation: isolate;
+  background-color: #078dbb;
+  background-image:
+    linear-gradient(90deg, transparent 0 86%, rgb(255 255 255 / 10%) 90%, transparent 96%),
+    radial-gradient(ellipse at 48% 49%, rgb(244 114 182 / 76%), transparent 25%),
+    radial-gradient(ellipse at 70% 42%, rgb(9 50 126 / 78%), transparent 33%),
+    radial-gradient(ellipse at 20% 20%, rgb(34 211 238 / 65%), transparent 38%),
+    linear-gradient(120deg, #0879a8 0%, #06a6cb 48%, #0879a8 100%);
+  background-size: 30px 100%, auto, auto, auto, auto;
+}
+
+.hero-stage::before,
+.hero-stage::after {
+  position: absolute;
+  z-index: -1;
+  content: "";
+  pointer-events: none;
+}
+
+.hero-stage::before {
+  inset: 0;
+  background: linear-gradient(90deg, rgb(3 35 83 / 20%), transparent 42%, rgb(2 43 90 / 12%));
+}
+
+.hero-stage::after {
+  inset: 0;
+  opacity: 0.2;
+  background-image: repeating-linear-gradient(
+    90deg,
+    transparent 0,
+    transparent 28px,
+    rgb(255 255 255 / 40%) 30px,
+    transparent 33px
+  );
+  mask-image: linear-gradient(90deg, black, transparent 85%);
+}
+
+.hero-glow {
+  position: absolute;
+  z-index: -1;
+  width: 24rem;
+  height: 24rem;
+  border-radius: 9999px;
+  filter: blur(100px);
+  pointer-events: none;
+}
+
+.hero-glow-pink {
+  top: 28%;
+  left: 34%;
+  background: rgb(244 114 182 / 30%);
+}
+
+.hero-glow-blue {
+  right: 4%;
+  bottom: 8%;
+  background: rgb(56 189 248 / 35%);
+}
+
+@media (max-width: 640px) {
+  .hero-stage {
+    background-position: center;
+  }
+
+  .hero-glow {
+    width: 15rem;
+    height: 15rem;
   }
 }

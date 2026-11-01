@@ -33,7 +33,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
               href={project.githubUrl} 
               target="_blank" 
               rel="noreferrer"
-              className="p-2 bg-white/80 dark:bg-zinc-900/80 backdrop-blur-md rounded-full text-zinc-600 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors shadow-sm dark:shadow-none"
+              className="p-2 bg-white/90 backdrop-blur-md rounded-full text-zinc-600 hover:text-brand-accent hover:bg-pink-50 transition-colors shadow-sm"
             >
               <FaGithub className="w-4 h-4" />
             </a>
@@ -43,7 +43,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
               href={project.liveUrl} 
               target="_blank" 
               rel="noreferrer"
-              className="p-2 bg-white/80 dark:bg-zinc-900/80 backdrop-blur-md rounded-full text-zinc-600 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors shadow-sm dark:shadow-none"
+              className="p-2 bg-white/90 backdrop-blur-md rounded-full text-zinc-600 hover:text-brand-accent hover:bg-pink-50 transition-colors shadow-sm"
             >
               <ExternalLink className="w-4 h-4" />
             </a>
@@ -52,14 +52,14 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
       </div>
       
       <div className="p-6 flex flex-col flex-grow">
-        <h3 className="text-xl font-bold text-zinc-900 dark:text-white mb-2 group-hover:text-brand-primary transition-colors">{project.title}</h3>
-        <p className="text-zinc-600 dark:text-zinc-400 text-sm mb-6 flex-grow leading-relaxed transition-colors">{project.description}</p>
+        <h3 className="text-xl font-bold text-zinc-900 mb-2 group-hover:text-brand-primary transition-colors">{project.title}</h3>
+        <p className="text-zinc-600 text-sm mb-6 flex-grow leading-relaxed">{project.description}</p>
         
         <div className="flex flex-wrap gap-2 mt-auto">
           {project.tags.map(tag => (
             <span 
               key={tag} 
-              className="text-xs font-medium px-2.5 py-1 rounded-md bg-zinc-100 dark:bg-zinc-800/50 text-zinc-600 dark:text-zinc-300 border border-zinc-200 dark:border-zinc-700/50 transition-colors"
+              className="text-xs font-medium px-2.5 py-1 rounded-md bg-sky-50 text-sky-800 border border-sky-100"
             >
               {tag}
             </span>

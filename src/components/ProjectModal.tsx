@@ -38,26 +38,26 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
             initial={{ opacity: 0, scale: 0.95, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
-            className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-50 w-full max-w-3xl max-h-[90vh] overflow-y-auto bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-3xl shadow-2xl transition-colors"
+            className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-50 w-full max-w-3xl max-h-[90vh] overflow-y-auto bg-white border border-sky-100 rounded-3xl shadow-2xl"
           >
             <div className="sticky top-0 right-0 z-10 flex justify-end p-4 pointer-events-none">
               <button
                 onClick={onClose}
-                className="pointer-events-auto p-2 rounded-full bg-zinc-100 dark:bg-zinc-900 text-zinc-500 hover:text-zinc-900 dark:hover:text-white transition-colors"
+                className="pointer-events-auto p-2 rounded-full bg-sky-50 text-zinc-500 hover:text-brand-accent transition-colors"
               >
                 <X className="w-5 h-5" />
               </button>
             </div>
 
             <div className="px-8 pb-10 -mt-10">
-              <h2 className="text-3xl md:text-4xl font-bold text-zinc-900 dark:text-white mb-4 transition-colors">
+              <h2 className="text-3xl md:text-4xl font-bold text-zinc-900 mb-4">
                 {project.title}
               </h2>
-              <p className="text-lg text-zinc-600 dark:text-zinc-400 mb-8 leading-relaxed transition-colors">
+              <p className="text-lg text-zinc-600 mb-8 leading-relaxed">
                 {project.description}
               </p>
 
-              <h3 className="text-xl font-bold text-zinc-900 dark:text-white mb-6 transition-colors">
+              <h3 className="text-xl font-bold text-zinc-900 mb-6">
                 Key Features
               </h3>
               
@@ -70,12 +70,12 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: index * 0.05 }}
                       key={index}
-                      className="flex items-start gap-3 p-4 rounded-xl bg-zinc-50 dark:bg-zinc-900/50 border border-zinc-100 dark:border-zinc-800/50 transition-colors"
+                      className="flex items-start gap-3 p-4 rounded-xl bg-sky-50/60 border border-sky-100"
                     >
                       <div className="p-2 rounded-lg bg-brand-primary/10 text-brand-primary shrink-0">
                         <Icon className="w-5 h-5" />
                       </div>
-                      <span className="text-sm font-medium text-zinc-700 dark:text-zinc-300 transition-colors leading-snug pt-0.5">
+                      <span className="text-sm font-medium text-zinc-700 leading-snug pt-0.5">
                         {feature}
                       </span>
                     </motion.div>
