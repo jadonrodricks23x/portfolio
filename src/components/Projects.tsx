@@ -2,7 +2,6 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { projects } from "../data/projects";
 import { ProjectCard } from "./ProjectCard";
-import { FeaturedProject } from "./FeaturedProject";
 import { ProjectModal } from "./ProjectModal";
 import type { Project } from "../data/projects";
 
@@ -10,16 +9,12 @@ export function Projects() {
   const [filter, setFilter] = useState("All");
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   
-  // Separate featured from standard projects
-  const featuredProject = projects.find(p => p.isFeatured);
-  const standardProjects = projects.filter(p => !p.isFeatured);
+  const categories = ["All", ...new Set(projects.map((project) => project.category))];
 
-  // Extract unique tags from ALL projects for the filter
-  const allTags = ["All", ...Array.from(new Set(projects.flatMap(p => p.tags)))].slice(0, 6);
-
-  const filteredProjects = filter === "All" 
-    ? standardProjects 
-    : standardProjects.filter(p => p.tags.includes(filter));
+  const filteredProjects =
+    filter === "All"
+      ? projects
+      : projects.filter((project) => project.category === filter);
 
   return (
     <section className="py-24 relative" id="projects">
@@ -43,35 +38,33 @@ export function Projects() {
             transition={{ delay: 0.1 }}
             className="flex flex-wrap gap-3"
           >
-            {allTags.map(tag => (
+            {categories.map((category) => (
               <button
-                key={tag}
-                onClick={() => setFilter(tag)}
-                className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
-                  filter === tag 
+                key={category}
+                onClick={() => setFilter(category)}
+                className={`min-h-11 px-4 py-2 rounded-full text-sm font-medium transition-all ${
+                  filter === category
                     ? "bg-brand-primary text-white shadow-md shadow-sky-500/20"
-                      : "bg-white text-zinc-600 border border-sky-100 hover:border-brand-accent/40 hover:text-brand-accent hover:bg-pink-50"
+                    : "bg-white text-zinc-600 border border-sky-100 hover:border-brand-accent/40 hover:text-brand-accent hover:bg-pink-50"
                 }`}
               >
-                {tag}
+                {category}
               </button>
             ))}
           </motion.div>
         </div>
 
-        {/* Featured Project */}
-        {(filter === "All" || (featuredProject && featuredProject.tags.includes(filter))) && featuredProject && (
-          <FeaturedProject 
-            project={featuredProject} 
-            onViewDetails={() => setSelectedProject(featuredProject)} 
-          />
-        )}
-
-        {/* Standard Projects Grid */}
+        {/* Project Grid */}
         <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
           <AnimatePresence mode="popLayout">
             {filteredProjects.map((project, index) => (
-              <ProjectCard key={project.id} project={project} index={index} />
+              <ProjectCard
+                key={project.id}
+                project={project}
+                index={index}
+                isFeatured={project.isFeatured}
+                onViewDetails={() => setSelectedProject(project)}
+              />
             ))}
           </AnimatePresence>
         </motion.div>

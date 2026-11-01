@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
-import { ArrowDown, ArrowRight, BarChart3, Code2, Sparkles } from "lucide-react";
+import { ArrowDown, ArrowRight, BarChart3, Code2 } from "lucide-react";
+import { projects } from "../data/projects";
 
 export function Hero() {
   return (
@@ -67,13 +68,10 @@ export function Hero() {
           >
             <div className="absolute -inset-8 rounded-[3rem] bg-pink-300/20 blur-3xl" />
             <div className="relative rounded-[2rem] border border-white/30 bg-sky-950/15 p-5 shadow-2xl shadow-sky-950/20 backdrop-blur-xl sm:p-7">
-              <div className="mb-7 flex items-center justify-between border-b border-white/20 pb-5">
+              <div className="mb-7 border-b border-white/20 pb-5">
                 <div>
                   <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/60">Portfolio snapshot</p>
                   <p className="mt-1 text-lg font-semibold">Ideas into impact</p>
-                </div>
-                <div className="grid h-11 w-11 place-items-center rounded-2xl bg-pink-300/20 text-pink-100">
-                  <Sparkles className="h-5 w-5" />
                 </div>
               </div>
 
@@ -98,7 +96,7 @@ export function Hero() {
                   <div className="mb-4 grid h-9 w-9 place-items-center rounded-xl bg-sky-200/20 text-sky-100">
                     <Code2 className="h-4 w-4" />
                   </div>
-                  <p className="text-2xl font-semibold">04</p>
+                  <p className="text-2xl font-semibold">{String(projects.length).padStart(2, "0")}</p>
                   <p className="mt-1 text-xs text-white/65">Projects to explore</p>
                 </div>
                 <div className="rounded-2xl border border-white/20 bg-white/10 p-4">
